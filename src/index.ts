@@ -1,3 +1,9 @@
-export const hello = (): void => {
-  console.log('Hello.');
-};
+export {
+  SplitSentenceType,
+  FormalityType,
+  Language,
+  Translation,
+  Usage,
+} from './deepLType';
+import DeepLClient from './deepLClient';
+export default DeepLClient;

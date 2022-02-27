@@ -1,53 +1,16 @@
-# my-typescript-lib-boilerplate
+# deepl-lightweight-client
 
-A boilerplate for TypeScript, Jest and library.
+deepl-lightweight-client is unofficial DeepL API Client.
+It is useful for translating Language easily.
 
-# Setup
+Official documentation: https://www.deepl.com/api.html
+
+# Installation
 
 ```
-$ yarn install
+$ yarn add deepl-lightweight-client
 ```
 
 # Usage
 
-## Run
-
-```
-$ yarn ts-node src/bin/index.ts
-```
-
-or
-
-```
-$ yarn node dist/bin/index.js
-```
-
-## Build
-
-```
-$ yarn build
-```
-
-## Lint
-
-```
-$ yarn lint
-```
-
-## Test
-
-```
-$ yarn test
-```
-
-and see also coverage report in your browser
-
-```
-$ npx http-server -o coverage/lcov-report
-```
-
-## Format
-
-```
-$ yarn format
-```
+TBD
