@@ -1,0 +1,16 @@
+name: Manual
+on:
+  workflow_dispatch:
+    inputs:
+      comment:
+        description: "sample input value"
+        required: true
+        default: "hello world!"
+
+jobs:
+  manual_process:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 10
+    steps:
+      - name: Echo
+        run: echo ${{ github.event.inputs.comment }}

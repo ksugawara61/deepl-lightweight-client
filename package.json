@@ -1,0 +1,49 @@
+{
+  "name": "my-typescript-lib-boilerplate",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "license": "MIT",
+  "devDependencies": {
+    "@jest/types": "^27.5.1",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.4.0",
+    "jest": "^27.5.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "simple-git-hooks": "^2.7.0",
+    "ts-jest": "^27.1.3",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
+  },
+  "bin": {
+    "my-typescript-lib-boilerplat": "dist/bin/index.js"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "yarn test && yarn lint"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "run-p build:*",
+    "build:common": "tsc",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "lint": "run-s lint:*",
+    "lint:eslint": "eslint . --ext .ts,.tsx --fix",
+    "lint:prettier": "prettier --check .",
+    "format": "prettier --write .",
+    "test": "jest",
+    "prepare": "simple-git-hooks"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=14"
+  }
+}
