@@ -1,15 +1,7 @@
 name: Release
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        type: choice
-        description: "auto-increment version number"
-        required: true
-        options:
-        - major
-        - minor
-        - patch
+  release:
+    types: [created]
 jobs:
   manual_process:
     runs-on: ubuntu-20.04
@@ -25,15 +17,11 @@ jobs:
         run: yarn lint
       - name: Unit Test
         run: yarn test
-      # - run: yarn version --major
-      #   if: github.event.inputs.version == 'major'
-      # - run: yarn version --minor
-      #   if: github.event.inputs.version == 'minor'
-      # - run: yarn version --patch
-      #   if: github.event.inputs.version == 'patch'
-      - name: publish-to-npm
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '17.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Publish To npm
         run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
-      - name: Release comment
-        run: echo ${{ github.event.inputs.version }}
