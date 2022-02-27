@@ -25,12 +25,12 @@ jobs:
         run: yarn lint
       - name: Unit Test
         run: yarn test
-      - run: yarn version --major
-        if: github.event.inputs.version == 'major'
-      - run: yarn version --minor
-        if: github.event.inputs.version == 'minor'
-      - run: yarn version --patch
-        if: github.event.inputs.version == 'patch'
+      # - run: yarn version --major
+      #   if: github.event.inputs.version == 'major'
+      # - run: yarn version --minor
+      #   if: github.event.inputs.version == 'minor'
+      # - run: yarn version --patch
+      #   if: github.event.inputs.version == 'patch'
       - name: publish-to-npm
         run: yarn publish
         env:
