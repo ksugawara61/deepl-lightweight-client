@@ -1,0 +1,39 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: choice
+        description: "auto-increment version number"
+        required: true
+        options:
+        - major
+        - minor
+        - patch
+jobs:
+  manual_process:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '17'
+      - name: Install packages
+        run: yarn install --frozen-lockfile
+      - name: Lint
+        run: yarn lint
+      - name: Unit Test
+        run: yarn test
+      - run: yarn version --major
+        if: github.event.inputs.version == 'major'
+      - run: yarn version --minor
+        if: github.event.inputs.version == 'minor'
+      - run: yarn version --patch
+        if: github.event.inputs.version == 'patch'
+      - name: publish-to-npm
+        run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+      - name: Release comment
+        run: echo ${{ github.event.inputs.version }}
