@@ -7,7 +7,7 @@ import {
   Usage,
 } from './deepLType';
 
-class DeepLClient {
+export class DeepLClient {
   instance: AxiosInstance;
 
   constructor(apiKey: string) {
@@ -63,5 +63,3 @@ class DeepLClient {
     return res.data['translations'];
   }
 }
-
-export default DeepLClient;

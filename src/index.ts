@@ -5,5 +5,4 @@ export {
   Translation,
   Usage,
 } from './deepLType';
-import DeepLClient from './deepLClient';
-export default DeepLClient;
+export { DeepLClient } from './deepLClient';
